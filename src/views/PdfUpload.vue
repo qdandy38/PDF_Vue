@@ -12,11 +12,7 @@ function upload(e){
 	console.log("file", file);
 }
 function drop(e){
-	e.preventDefault();
 	upload(e);
-}
-function dragover(e){
-	e.preventDefault();
 }
 </script>
 <template>
@@ -25,8 +21,8 @@ function dragover(e){
 		<div class="pdfUpload_main">
 			<div class="pdfUpload_main_uploadArea"
 				@click="uploadEvent"
-				@drop="drop"
-				@dragover="dragover"
+				@drop.prevent="drop"
+				@dragover.prevent
 			>
 				<label for="file">
 					<input type="file" name="file" class="hidden" ref="fileDom" @change="upload">
