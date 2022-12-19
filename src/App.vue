@@ -1,10 +1,10 @@
 <script setup>
-import PdfMain from './components/PdfMain.vue'
+import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
   <div class="app">
-    <PdfMain />
+    <RouterView />
   </div>
 </template>
 <style lang="css" scoped>

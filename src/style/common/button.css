@@ -1,0 +1,21 @@
+@import 'tailwindcss/components';
+@layer components {
+	.btn {
+		@apply
+		text-white
+		bg-primary
+		rounded-[4px]
+		min-w-[200px] 
+		flex
+		justify-center
+		items-center
+		py-4
+		px-7
+		font-bold
+		text-base;
+		&:hover{
+			@apply
+			bg-primaryHover;
+		}
+	}
+}
