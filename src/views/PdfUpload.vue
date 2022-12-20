@@ -2,6 +2,7 @@
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue"
 import { ref } from "vue";
+import { useCommonStore } from "../store";
 const fileDom = ref(null)
 function uploadEvent(){
 	console.log(123);
@@ -10,6 +11,7 @@ function uploadEvent(){
 function upload(e){
 	const file = e.target.files || e.dataTransfer.files;
 	console.log("file", file);
+	useCommonStore().updFile(file);
 }
 function drop(e){
 	upload(e);
