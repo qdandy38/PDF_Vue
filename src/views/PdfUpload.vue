@@ -3,15 +3,16 @@ import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue"
 import { ref } from "vue";
 import { useCommonStore } from "../store";
+import router from "../router";
 const fileDom = ref(null)
 function uploadEvent(){
-	console.log(123);
 	fileDom.value.dispatchEvent(new MouseEvent("click"))
 }
 function upload(e){
 	const file = e.target.files || e.dataTransfer.files;
-	console.log("file", file);
 	useCommonStore().updFile(file);
+	router.push("/preview")
+	console.log(888);
 }
 function drop(e){
 	upload(e);
