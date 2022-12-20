@@ -1,9 +1,21 @@
 <script setup>
+const props = defineProps({
+	isPreview:{
+		type: Boolean,
+		default: false
+	},
+	fileName: String
+});
 </script>
 <template>
 	<header class="header">
-		<img src="/images/logo.jpg" class="header_logo" />
-		<h2 class="header_title">快速省時的電子簽署工具</h2>
+		<template v-if="!isPreview">
+			<img src="/images/logo.jpg" class="header_logo" />
+			<h2 class="header_title">快速省時的電子簽署工具</h2>
+		</template>
+		<div v-else class="header_preview">
+			<p>{{ fileName }}</p>
+		</div>
 	</header>
 </template>
 <style lang="css" scoped>
@@ -29,6 +41,12 @@
 	&_title{
 		@apply
 		text-2xl
+		font-bold
+		text-gray-400;
+	}
+	&_preview{
+		@apply
+		text-sm
 		font-bold
 		text-gray-400;
 	}
