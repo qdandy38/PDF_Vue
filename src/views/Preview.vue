@@ -5,10 +5,9 @@ import { ref, onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useCommonStore } from '../store';
 
-const { file } = storeToRefs(useCommonStore());
-const fileName = ref(file.value[0].name || "");
+const { fileName } = storeToRefs(useCommonStore());
 onMounted(()=>{
-	console.log("file", file.value);
+	// console.log("file", file.value);
 })
 </script>
 <template>
