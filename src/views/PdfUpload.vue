@@ -4,15 +4,21 @@ import Footer from "../components/Footer.vue"
 import { ref } from "vue";
 import { useCommonStore } from "../store";
 import router from "../router";
-const fileDom = ref(null)
+const fileDom = ref(null);
 function uploadEvent(){
 	fileDom.value.dispatchEvent(new MouseEvent("click"))
 }
 function upload(e){
 	const file = e.target.files || e.dataTransfer.files;
-	useCommonStore().updFile(file);
-	router.push("/preview")
-	console.log(888);
+	if(!file[0]){return;}
+	const fileReader = new FileReader();
+	fileReader.readAsDataURL(file[0]);
+	fileReader.onload = pdfFile => {
+		useCommonStore().updFileName(file[0].name)
+		useCommonStore().updFileData(pdfFile.target.result)
+		router.push("/preview")
+	}
+	// useCommonStore().updFile(file);
 }
 function drop(e){
 	upload(e);
