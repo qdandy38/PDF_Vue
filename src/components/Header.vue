@@ -1,4 +1,5 @@
 <script setup>
+const emit = defineEmits(["headerFun"]);
 const props = defineProps({
 	isPreview:{
 		type: Boolean,
@@ -15,6 +16,7 @@ const props = defineProps({
 		</template>
 		<div v-else class="header_preview">
 			<p>{{ fileName }}</p>
+			<Icon name="edit" @click="emit('headerFun')" />
 		</div>
 	</header>
 </template>
@@ -46,9 +48,20 @@ const props = defineProps({
 	}
 	&_preview{
 		@apply
-		text-sm
+		flex
+		items-center
 		font-bold
 		text-gray-400;
+		p{
+			@apply
+			pl-2;
+		}
+		i{
+			@apply
+			cursor-pointer
+			px-2
+			text-xl;
+		}
 	}
 }
 </style>
