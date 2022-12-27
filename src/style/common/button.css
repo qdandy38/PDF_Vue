@@ -2,20 +2,36 @@
 @layer components {
 	.btn {
 		@apply
-		text-white
-		bg-primary
+		text-gray-500
+		bg-white
 		rounded-[4px]
-		min-w-[200px] 
+		border-2
+		border-solid
+		border-gray-200
 		flex
 		justify-center
 		items-center
-		py-4
-		px-7
 		font-bold
 		text-base;
 		&:hover{
 			@apply
-			bg-primaryHover;
+			bg-gray-100;
+		}
+		&-primary{
+			@apply
+			text-white
+			bg-primary
+			border-primary;
+			&:hover{
+				@apply
+				bg-primaryHover;
+			}
+		}
+		&-secondary{
+			@apply
+			text-gray-400
+			bg-gray-200
+			border-gray-200;
 		}
 	}
 }
