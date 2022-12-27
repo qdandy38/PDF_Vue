@@ -1,6 +1,7 @@
 <script setup>
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue"
+import PreviewMain from "../components/PreviewMain.vue"
 import { ref, onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useCommonStore } from '../store';
@@ -46,9 +47,10 @@ onMounted(()=>{
 				<div v-if="item.step!==stepList.length" class="preview_bar_step_line"></div>
 			</div>
 		</div>
-		<div class="preview_main">
+		<PreviewMain />
+		<!-- <div class="preview_main">
 			Preview
-		</div>
+		</div> -->
 		<Footer />
 	</div>
 </template>
@@ -59,7 +61,8 @@ onMounted(()=>{
 		flex
 		justify-center
 		items-center
-		py-4;
+		py-4
+		bg-white;
 		&_step{
 			@apply
 			flex
@@ -118,14 +121,6 @@ onMounted(()=>{
 				mr-4;
 			}
 		}
-	}
-	&_main{
-		@apply
-		border-t
-		border-solid
-		border-gray-300
-		h-[calc(100vh-192px)]
-		overflow-hidden;
 	}
 }
 </style>

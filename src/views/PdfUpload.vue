@@ -38,7 +38,7 @@ function drop(e){
 					<div class="pdfUpload_main_uploadArea_container">
 						<img src="/images/add_file.png" />
 						<span>將檔案拖曳至這裡</span>
-						<button class="btn mt-4">選擇檔案</button>
+						<button class="btn btn-primary uploadBtn">選擇檔案</button>
 						<p>檔案大小10MB以內，檔案格式為PDF</p>
 					</div>
 				</label>
@@ -105,6 +105,13 @@ function drop(e){
 					font-bold
 					text-primary
 					pt-2
+				}
+				.uploadBtn{
+					@apply
+					mt-4
+					min-w-[200px] 
+					py-4
+					px-7;
 				}
 			}
 		}

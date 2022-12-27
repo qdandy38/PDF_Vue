@@ -23,6 +23,7 @@ const props = defineProps({
 <style lang="css" scoped>
 .header{
 	@apply
+	bg-white
 	h-[80px]
 	px-[5%]
 	flex
