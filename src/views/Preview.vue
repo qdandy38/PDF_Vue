@@ -2,12 +2,12 @@
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue"
 import PreviewMain from "../components/PreviewMain.vue"
+import PreviewEditNamePop from "../components/PreviewEditNamePop.vue"
 import { ref, onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useCommonStore } from '../store';
 
 const { fileName } = storeToRefs(useCommonStore());
-const tmpFileName = ref(fileName.value || "");
 const nowStep = ref(2);
 const stepList = ref([
 	{
@@ -27,16 +27,18 @@ const stepList = ref([
 		title:"下載檔案"
 	},
 ]);
-function editFileName(){
-	console.log("editFileName");
+const isEditNamePopShow = ref(false);
+function toggleEditNamePop(){
+	isEditNamePopShow.value = !isEditNamePopShow.value;
 }
+
 onMounted(()=>{
 	// console.log("file", file.value);
 })
 </script>
 <template>
 	<div class="preview">
-		<Header :isPreview="true" :fileName="tmpFileName" @headerFun="editFileName" />
+		<Header :isPreview="true" :fileName="fileName" @headerFun="toggleEditNamePop" />
 		<div class="preview_bar">
 			<div v-for="(item,i) in stepList" :key="i" class="preview_bar_step">
 				<span :class="['preview_bar_step_nth',{'nowStep': item.step === nowStep},{'noComplete': item.step > nowStep}]">
@@ -48,10 +50,8 @@ onMounted(()=>{
 			</div>
 		</div>
 		<PreviewMain />
-		<!-- <div class="preview_main">
-			Preview
-		</div> -->
 		<Footer />
+		<PreviewEditNamePop v-if="isEditNamePopShow" @close="toggleEditNamePop" />
 	</div>
 </template>
 <style lang="css" scoped>
