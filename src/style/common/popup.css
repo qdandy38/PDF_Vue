@@ -50,12 +50,13 @@
 				flex
 				justify-center
 				items-center;
-				.confirm{
+				.btn{
 					@apply
 					h-10
 					min-w-[40px]
 					px-6
-					py-4;
+					py-4
+					mx-2.5;
 				}
 
 			}

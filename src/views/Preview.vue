@@ -3,6 +3,7 @@ import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue"
 import PreviewMain from "../components/PreviewMain.vue"
 import PreviewEditNamePop from "../components/PreviewEditNamePop.vue"
+import AddSignPop from "../components/AddSignPop.vue"
 import { ref, onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useCommonStore } from '../store';
@@ -28,10 +29,14 @@ const stepList = ref([
 	},
 ]);
 const isEditNamePopShow = ref(false);
+const isAddSignPopShow = ref(false);
 function toggleEditNamePop(){
 	isEditNamePopShow.value = !isEditNamePopShow.value;
 }
 
+function toggleAddSignPop(){
+	isAddSignPopShow.value = !isAddSignPopShow.value;
+}
 onMounted(()=>{
 	// console.log("file", file.value);
 })
@@ -49,9 +54,10 @@ onMounted(()=>{
 				<div v-if="item.step!==stepList.length" class="preview_bar_step_line"></div>
 			</div>
 		</div>
-		<PreviewMain />
+		<PreviewMain @addSign="toggleAddSignPop" />
 		<Footer />
 		<PreviewEditNamePop v-if="isEditNamePopShow" @close="toggleEditNamePop" />
+		<AddSignPop v-if="isAddSignPopShow" @close="toggleAddSignPop" />
 	</div>
 </template>
 <style lang="css" scoped>
