@@ -4,6 +4,7 @@ import { fabric } from 'fabric';
 import { storeToRefs } from 'pinia';
 import { useCommonStore } from '../store';
 import * as pdfjsLib from "pdfjs-dist";
+const emit = defineEmits(["addSign"]);
 const { fileName, fileData, base64Prefix } = storeToRefs(useCommonStore());
 const canvasDom = ref(null);
 const nowPage = ref(1); 
@@ -94,7 +95,7 @@ onMounted(()=>{
 			</div>
 		</div>
 		<div class="previewMain_addSignArea">
-			<button class="btn previewMain_addSignArea_btn mt-4">
+			<button class="btn previewMain_addSignArea_btn mt-4" @click="emit('addSign')">
 				<Icon name="add" />
 				<span>加入簽名</span>
 			</button>
