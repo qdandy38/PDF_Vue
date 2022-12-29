@@ -55,7 +55,7 @@ function setSign(){
 }
 onMounted(()=>{
 	// console.log("file", file.value);
-	initCanvas();
+	initCanvas(0);
 })
 </script>
 <template>

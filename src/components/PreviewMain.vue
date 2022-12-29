@@ -21,7 +21,12 @@ onMounted(()=>{
 	<div class="previewMain">
 		<aside class="previewMain_aside"></aside>
 		<div class="previewMain_pdfArea no-scrollbar">
-			<canvas id="canvas" ref="canvasDom"></canvas>
+			<template v-for="order in totalPages" :key="order">
+				<div :class="{'hidden': nowPage!==order }">
+					{{ order + "/" + nowPage }}
+					<canvas ref="canvasDom" :id="'canvasPDF_'+order"></canvas>
+				</div>
+			</template>
 			<div class="previewMain_pdfArea_pageController">
 				<div class="previewMain_pdfArea_pageController_btnGroup">
 					<div class="previewMain_pdfArea_pageController_btnGroup_btn" @click="goPage(nowPage-1)">
