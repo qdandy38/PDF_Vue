@@ -2,7 +2,8 @@ import { defineStore } from "pinia";
 const defaultState = {
 	fileName: "",
 	fileData: null,
-	base64Prefix: "data:application/pdf;base64,"
+	base64Prefix: "data:application/pdf;base64,",
+	signImage: ""
 };
 export default defineStore("common", {
   state: () => ({ ...defaultState }),
@@ -12,6 +13,9 @@ export default defineStore("common", {
 		},
 		updFileData(data){
 			this.fileData = data;
+		},
+		updSignImage(url){
+			this.signImage = url;
 		}
 	},
 	persist: {
@@ -19,7 +23,8 @@ export default defineStore("common", {
     paths: [
 			"fileName",
 			"fileData",
-			"base64Prefix"
+			"base64Prefix",
+			"signImage"
     ]
   }
 })

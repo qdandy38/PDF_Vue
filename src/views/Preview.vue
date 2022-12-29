@@ -4,11 +4,23 @@ import Footer from "../components/Footer.vue"
 import PreviewMain from "../components/PreviewMain.vue"
 import PreviewEditNamePop from "../components/PreviewEditNamePop.vue"
 import AddSignPop from "../components/AddSignPop.vue"
-import { ref, onMounted } from 'vue';
+import useCanvas from "../use/useCanvas.js";
+import { ref, onMounted, provide } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useCommonStore } from '../store';
+import { fabric } from 'fabric';
 
-const { fileName } = storeToRefs(useCommonStore());
+
+const { fileName, signImage } = storeToRefs(useCommonStore());
+const canvasDom = ref(null);
+provide("canvasDom", canvasDom);
+const {
+	initCanvas,
+	signToCanvas,
+	goPage,
+	nowPage,
+	totalPages
+} = useCanvas(canvasDom);
 const nowStep = ref(2);
 const stepList = ref([
 	{
@@ -37,8 +49,13 @@ function toggleEditNamePop(){
 function toggleAddSignPop(){
 	isAddSignPopShow.value = !isAddSignPopShow.value;
 }
+function setSign(){
+	signToCanvas();
+	toggleAddSignPop();
+}
 onMounted(()=>{
 	// console.log("file", file.value);
+	initCanvas(0);
 })
 </script>
 <template>
@@ -54,10 +71,15 @@ onMounted(()=>{
 				<div v-if="item.step!==stepList.length" class="preview_bar_step_line"></div>
 			</div>
 		</div>
-		<PreviewMain @addSign="toggleAddSignPop" />
+		<PreviewMain
+			:nowPage="nowPage"
+			:totalPages="totalPages"
+			:goPage="goPage"
+			@addSign="toggleAddSignPop"
+		/>
 		<Footer />
 		<PreviewEditNamePop v-if="isEditNamePopShow" @close="toggleEditNamePop" />
-		<AddSignPop v-if="isAddSignPopShow" @close="toggleAddSignPop" />
+		<AddSignPop v-if="isAddSignPopShow" @close="toggleAddSignPop" @setSign="setSign" />
 	</div>
 </template>
 <style lang="css" scoped>
