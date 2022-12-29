@@ -4,24 +4,24 @@ import { storeToRefs } from 'pinia';
 import { useCommonStore } from '../store';
 import * as pdfjsLib from "pdfjs-dist";
 export default(canvasDom) =>{
-  const canvasCore = ref(null);
+  let canvasCore = null;
   const { signImage, fileData, base64Prefix } = storeToRefs(useCommonStore());
   const nowPage = ref(1); 
   const totalPages = ref(1);
 
   async function initCanvas(){
-    canvasCore.value = new fabric.Canvas(canvasDom.value);
-    canvasCore.value.requestRenderAll();
+    canvasCore = new fabric.Canvas(canvasDom.value);
+    canvasCore.requestRenderAll();
     const pdfData = await printPDF();
     console.log("pdfData", pdfData);
     const pdfImage = await pdfToImage(pdfData);
 
     // 透過比例設定 canvas 尺寸
-    canvasCore.value.setWidth(pdfImage.width / window.devicePixelRatio);
-    canvasCore.value.setHeight(pdfImage.height / window.devicePixelRatio);
+    canvasCore.setWidth(pdfImage.width / window.devicePixelRatio);
+    canvasCore.setHeight(pdfImage.height / window.devicePixelRatio);
 
     // 將 PDF 畫面設定為背景
-    canvasCore.value.setBackgroundImage(pdfImage, canvasCore.value.renderAll.bind(canvasCore.value));
+    canvasCore.setBackgroundImage(pdfImage, canvasCore.renderAll.bind(canvasCore));
   }
   async function printPDF(orderPage){
     pdfjsLib.GlobalWorkerOptions.workerSrc = await import('pdfjs-dist/build/pdf.worker.entry')
@@ -70,10 +70,10 @@ export default(canvasDom) =>{
     if(!signImage.value) return;
     fabric.Image.fromURL(signImage.value, (image)=>{
       image.top = 400;
-      image.scaleX = 1;
-      image.scaleY = 1;
-      console.log("aaa", canvasCore.value, canvasDom.value);
-      canvasCore.value.add(image);
+      image.scaleX = 0.5;
+      image.scaleY = 0.5;
+      console.log("aaa", canvasCore, canvasDom.value);
+      canvasCore.add(image);
     })
   }
 
