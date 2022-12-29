@@ -23,7 +23,6 @@ onMounted(()=>{
 		<div class="previewMain_pdfArea no-scrollbar">
 			<template v-for="order in totalPages" :key="order">
 				<div :class="{'hidden': nowPage!==order }">
-					{{ order + "/" + nowPage }}
 					<canvas ref="canvasDom" :id="'canvasPDF_'+order"></canvas>
 				</div>
 			</template>

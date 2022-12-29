@@ -17,6 +17,7 @@ provide("canvasDom", canvasDom);
 const {
 	initCanvas,
 	signToCanvas,
+	addDeleteBtn,
 	goPage,
 	nowPage,
 	totalPages
@@ -56,6 +57,7 @@ function setSign(){
 onMounted(()=>{
 	// console.log("file", file.value);
 	initCanvas(0);
+	// addDeleteBtn();
 })
 </script>
 <template>
