@@ -5,14 +5,34 @@ import { storeToRefs } from 'pinia';
 import { useCommonStore } from '../store';
 import * as pdfjsLib from "pdfjs-dist";
 import useCanvas from "../use/useCanvas.js";
-const emit = defineEmits(["addSign"]);
+import ConfirmPdfPop from "../components/ConfirmPdfPop.vue"
+const { sequence } = storeToRefs(useCommonStore());
+const emit = defineEmits(["addSign","updStep"]);
 const props = defineProps({
 	nowPage: Number,
 	totalPages: Number,
-	goPage: Function
+	goPage: Function,
 });
 const canvasDom = inject("canvasDom");
+const isConfirmPop = ref(false);
 
+// function save(){
+// 	console.log("sequence", sequence.value);
+// 	let tempArr = [];
+// 	sequence.value.forEach((item,i)=>{
+// 		const canvasEleURL = item.toDataURL();
+// 		tempArr.push(canvasEleURL);
+// 	})
+// 	useCommonStore().updDownloadSequence(tempArr);
+// }
+function updStep(type){
+	emit("updStep", type);
+	isConfirmPop.value = !isConfirmPop.value;
+}
+function goNextPage(){
+	updStep('+');
+	// save();
+}
 onMounted(()=>{
 	// initCanvas();
 })
@@ -53,12 +73,13 @@ onMounted(()=>{
 				<Icon name="calendar_today" />
 				<span>加入日期</span>
 			</button>
-			<button class="btn btn-primary previewMain_addSignArea_btn mt-6">
+			<button class="btn btn-primary previewMain_addSignArea_btn mt-6" @click="updStep('+')">
 				<span>下一步</span>
 			</button>
 			<button class="btn btn-secondary previewMain_addSignArea_btn">
 				<span>上一步</span>
 			</button>
+			<ConfirmPdfPop v-if="isConfirmPop" @prevStep="updStep" />
 		</div>
 	</div>
 </template>
@@ -139,6 +160,7 @@ onMounted(()=>{
 	}
 	&_addSignArea{
 		@apply
+		relative
 		w-[400px]
 		h-full
 		bg-white

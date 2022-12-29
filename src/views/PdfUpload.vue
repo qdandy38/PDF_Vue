@@ -1,7 +1,7 @@
 <script setup>
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue"
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useCommonStore } from "../store";
 import router from "../router";
 const fileDom = ref(null);
@@ -23,6 +23,10 @@ function upload(e){
 function drop(e){
 	upload(e);
 }
+
+onMounted(()=>{
+	useCommonStore().resetAll();
+})
 </script>
 <template>
 	<div class="pdfUpload">

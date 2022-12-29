@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "fabric": "^5.2.4",
+    "jspdf": "^2.5.1",
     "pdfjs-dist": "^2.5.207",
     "pinia": "^2.0.17",
     "pinia-plugin-persistedstate": "^1.6.1",

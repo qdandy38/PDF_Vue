@@ -4,7 +4,7 @@ import { storeToRefs } from 'pinia';
 import { useCommonStore } from '../store';
 import * as pdfjsLib from "pdfjs-dist";
 export default(canvasDom) =>{
-  const { signImage, fileData, base64Prefix } = storeToRefs(useCommonStore());
+  const { signImage, fileData, base64Prefix, sequence } = storeToRefs(useCommonStore());
   const nowPage = ref(1); 
   const totalPages = ref(1);
   let allCanvas = [];
@@ -88,6 +88,7 @@ export default(canvasDom) =>{
       image.scaleX = 0.5;
       image.scaleY = 0.5;
       allCanvas[nowPage.value-1].add(image);
+      useCommonStore().updSequence(allCanvas);
     })
   }
 
@@ -95,6 +96,8 @@ export default(canvasDom) =>{
     const temp = [...allCanvas];
     temp[order] = canvasObj;
     allCanvas = temp;
+    useCommonStore().updSequence(allCanvas);
+    console.log("aaaaaaaalllllllllll", sequence.value);
   }
 
   function addDeleteBtn(){
@@ -138,6 +141,6 @@ export default(canvasDom) =>{
     addDeleteBtn,
     goPage,
     nowPage,
-    totalPages
+    totalPages,
   }
 }

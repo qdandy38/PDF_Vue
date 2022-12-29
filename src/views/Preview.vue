@@ -20,7 +20,7 @@ const {
 	addDeleteBtn,
 	goPage,
 	nowPage,
-	totalPages
+	totalPages,
 } = useCanvas(canvasDom);
 const nowStep = ref(2);
 const stepList = ref([
@@ -54,6 +54,13 @@ function setSign(){
 	signToCanvas();
 	toggleAddSignPop();
 }
+function updStep(type){
+	if(type==="+"){
+		nowStep.value++;
+	}else{
+		nowStep.value--;
+	}
+}
 onMounted(()=>{
 	// console.log("file", file.value);
 	initCanvas(0);
@@ -78,6 +85,7 @@ onMounted(()=>{
 			:totalPages="totalPages"
 			:goPage="goPage"
 			@addSign="toggleAddSignPop"
+			@updStep="updStep"
 		/>
 		<Footer />
 		<PreviewEditNamePop v-if="isEditNamePopShow" @close="toggleEditNamePop" />

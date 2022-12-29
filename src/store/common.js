@@ -3,7 +3,9 @@ const defaultState = {
 	fileName: "",
 	fileData: null,
 	base64Prefix: "data:application/pdf;base64,",
-	signImage: ""
+	signImage: "",
+	sequence: [], // 原始pdf-sequence
+	downloadSequence:[]
 };
 export default defineStore("common", {
   state: () => ({ ...defaultState }),
@@ -16,6 +18,20 @@ export default defineStore("common", {
 		},
 		updSignImage(url){
 			this.signImage = url;
+		},
+		updSequence(arr){
+			this.sequence = [...arr];
+		},
+		updDownloadSequence(arr){
+			// this.downloadSequence[order] = data;
+			this.downloadSequence = [...arr];
+		},
+		resetAll(){
+			this.fileName = "";
+			this.fileData = null;
+			this.signImage = "";
+			this.sequence = [];
+			this.downloadSequence = [];
 		}
 	},
 	persist: {
@@ -24,7 +40,9 @@ export default defineStore("common", {
 			"fileName",
 			"fileData",
 			"base64Prefix",
-			"signImage"
+			"signImage",
+			"sequence",
+			"downloadSequence"
     ]
   }
 })
