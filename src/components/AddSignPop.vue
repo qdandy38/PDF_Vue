@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
-const emit = defineEmits(["close"]);
+import { useCommonStore } from '../store';
+const emit = defineEmits(["close", "setSign"]);
 const signCanvasDom = ref(null);
 const canvasSize = ref(null);
 const ctx = ref(null);
@@ -105,6 +106,13 @@ function changeStrokeColor(item){
   ctx.value.strokeStyle = item.hex;
 }
 
+// 儲存簽名
+function saveImg(){
+  const newImg = signCanvasDom.value.toDataURL("image/png");
+  useCommonStore().updSignImage(newImg);
+  emit("setSign");
+}
+
 onMounted(()=>{
   initCanvas();
 })
@@ -144,7 +152,7 @@ onMounted(()=>{
       </div>
       <div class="popup_main_footer">
 				<button class="btn btn-secondary" @click="reset">清除</button>
-				<button class="btn btn-primary confirm" @click="confirm">儲存</button>
+				<button class="btn btn-primary confirm" @click="saveImg">儲存</button>
       </div>
     </div>
   </div>
