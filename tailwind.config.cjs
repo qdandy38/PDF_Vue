@@ -1,7 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
-  content: [],
+  // purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  content: [
+    "./index.html",
+    "./src/**/*.{vue,js,ts,jsx,tsx}",
+  ],
   theme: {
     extend: {
       colors:{
@@ -20,6 +23,17 @@ module.exports = {
         }
       }
     },
+    boxShadow: {
+      box: "-2px 0px 5px 2px rgba(0,0,0,0.2)",
+    },
+    screens:{
+      sm: "320px",
+      md: "768px",
+      lg: "960px",
+      xl: "1200px",
+    }
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+  ],
 }

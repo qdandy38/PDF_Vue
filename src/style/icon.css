@@ -1,0 +1,193 @@
+.customIcon{
+  &[name="keyboard_arrow_right"]:before {
+    content: "\e604";
+  }
+  
+  &[name="keyboard_arrow_down"]:before {
+    content: "\e605";
+  }
+  
+  &[name="keyboard_arrow_up"]:before {
+    content: "\e606";
+  }
+  
+  &[name="remove"]:before {
+    content: "\e607";
+  }
+  
+  &[name="person_add"]:before {
+    content: "\e608";
+  }
+  
+  &[name="save"]:before {
+    content: "\e609";
+  }
+  
+  &[name="menu"]:before {
+    content: "\e60a";
+  }
+  
+  &[name="refresh"]:before {
+    content: "\e60b";
+  }
+  
+  &[name="logout"]:before {
+    content: "\e60c";
+  }
+  
+  &[name="list_view"]:before {
+    content: "\e60d";
+  }
+  
+  &[name="more_vert"]:before {
+    content: "\e60e";
+  }
+  
+  &[name="notifications"]:before {
+    content: "\e60f";
+  }
+  
+  &[name="rotate_90_degrees_ccw"]:before {
+    content: "\e610";
+  }
+  
+  &[name="sort"]:before {
+    content: "\e611";
+  }
+  
+  &[name="more_horiz"]:before {
+    content: "\e612";
+  }
+  
+  &[name="search"]:before {
+    content: "\e613";
+  }
+  
+  &[name="timer"]:before {
+    content: "\e614";
+  }
+  
+  &[name="open_in_full"]:before {
+    content: "\e615";
+  }
+  
+  &[name="warning_amber"]:before {
+    content: "\e616";
+  }
+  
+  &[name="person"]:before {
+    content: "\e617";
+  }
+  
+  &[name="a"]-1_1:before {
+    content: "\e618";
+  }
+  
+  &[name="add"]:before {
+    content: "\e619";
+  }
+  
+  &[name="archive"]:before {
+    content: "\e61a";
+  }
+  
+  &[name="add_to_photos"]:before {
+    content: "\e61b";
+  }
+  
+  &[name="arrow_back"]:before {
+    content: "\e61c";
+  }
+  
+  &[name="arrow_drop_down"]:before {
+    content: "\e61d";
+  }
+  
+  &[name="arrow_left"]:before {
+    content: "\e61e";
+  }
+  
+  &[name="arrow_drop_up"]:before {
+    content: "\e61f";
+  }
+  
+  &[name="calendar_today"]:before {
+    content: "\e620";
+  }
+  
+  &[name="arrow_right"]:before {
+    content: "\e621";
+  }
+  
+  &[name="check"]:before {
+    content: "\e622";
+  }
+  
+  &[name="close"]:before {
+    content: "\e623";
+  }
+  
+  &[name="close_fullscreen"]:before {
+    content: "\e624";
+  }
+  
+  &[name="checked_some"]:before {
+    content: "\e625";
+  }
+  
+  &[name="card_view"]:before {
+    content: "\e626";
+  }
+  
+  &[name="file_download"]:before {
+    content: "\e627";
+  }
+  
+  &[name="filter_list"]:before {
+    content: "\e628";
+  }
+  
+  &[name="control_point_duplicate"]:before {
+    content: "\e629";
+  }
+  
+  &[name="info"]:before {
+    content: "\e62a";
+  }
+  
+  &[name="checked"]:before {
+    content: "\e62b";
+  }
+  
+  &[name="edit"]:before {
+    content: "\e62c";
+  }
+  
+  &[name="contacts"]:before {
+    content: "\e62d";
+  }
+  
+  &[name="check_box_outline_blank"]:before {
+    content: "\e62e";
+  }
+  
+  &[name="fit_screen"]:before {
+    content: "\e62f";
+  }
+  
+  &[name="delete"]:before {
+    content: "\e630";
+  }
+  
+  &[name="drag_indicator"]:before {
+    content: "\e631";
+  }
+  
+  &[name="folder"]:before {
+    content: "\e632";
+  }
+  
+  &[name="compare_arrows"]:before {
+    content: "\e633";
+  }
+}

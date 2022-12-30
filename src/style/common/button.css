@@ -1,0 +1,43 @@
+@import 'tailwindcss/components';
+@layer components {
+	.btn {
+		@apply
+		text-gray-500
+		bg-white
+		rounded-[4px]
+		border-2
+		border-solid
+		border-gray-200
+		flex
+		justify-center
+		items-center
+		font-bold
+		text-base;
+		&:hover{
+			@apply
+			bg-gray-100;
+		}
+		&-primary{
+			@apply
+			text-white
+			bg-primary
+			border-primary;
+			&:hover{
+				@apply
+				bg-primaryHover;
+			}
+		}
+		&-secondary{
+			@apply
+			text-gray-400
+			bg-gray-200
+			border-gray-200;
+		}
+		&-none{
+			@apply
+			text-gray-400
+			bg-transparent
+			border-transparent;
+		}
+	}
+}

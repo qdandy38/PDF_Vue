@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	body {
+    /* @apply font-sans; */
+    @apply min-h-[100vh];
+	}
+  input {
+    @apply
+    bg-transparent
+    px-[3px]
+    outline-none;
+  }
+
+  html {
+    @apply
+    leading-none;
+    font-family: "Microsoft Yahei", Arial, Helvetica, sans-serif;
+  }
+}
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  /* .clip-style {
+    clip-path: polygon(75% 0,29% 0,49% 68%);
+  } */
+}

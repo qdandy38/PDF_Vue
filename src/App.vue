@@ -1,17 +1,17 @@
 <script setup>
-import PdfMain from './components/PdfMain.vue'
+import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
   <div class="app">
-    <PdfMain />
+    <RouterView />
   </div>
 </template>
 <style lang="css" scoped>
 .app{
   @apply
-  w-screen
+  /* w-screen */
   h-screen
-  bg-gray-50;
+  /* bg-gray-50; */
 }
 </style>
