@@ -11,7 +11,6 @@
 	flex
 	justify-center
 	items-center
-	px-[5%]
 	h-[40px]
 	bg-gray-400;
 	p{

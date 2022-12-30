@@ -1,4 +1,5 @@
 <script setup>
+import router from "../router";
 const emit = defineEmits(["headerFun"]);
 const props = defineProps({
 	isPreview:{
@@ -11,7 +12,7 @@ const props = defineProps({
 <template>
 	<header class="header">
 		<template v-if="!isPreview">
-			<img src="/images/logo.jpg" class="header_logo" />
+			<img src="/images/logo.jpg" class="header_logo" @click="router.push('/')" />
 			<h2 class="header_title">快速省時的電子簽署工具</h2>
 		</template>
 		<div v-else class="header_preview">
@@ -27,25 +28,31 @@ const props = defineProps({
 	h-[80px]
 	px-[5%]
 	flex
-	justify-between
+	justify-center
 	items-center
 	border-b
 	border-solid
-	border-gray-300;
+	border-gray-300
+	lg:justify-between;
 	&::after{
 		@apply
 		content-[""]
-		w-[96px];
+		w-[96px]
+		hidden
+		lg:block;
 	}
 	&_logo{
 		@apply
-		w-[96px];
+		w-[96px]
+		cursor-pointer;
 	}
 	&_title{
 		@apply
 		text-2xl
 		font-bold
-		text-gray-400;
+		text-gray-400
+		hidden
+		lg:block;
 	}
 	&_preview{
 		@apply

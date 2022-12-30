@@ -6,6 +6,7 @@ import { useCommonStore } from '../store';
 import * as pdfjsLib from "pdfjs-dist";
 import useCanvas from "../use/useCanvas.js";
 import ConfirmPdfPop from "../components/ConfirmPdfPop.vue"
+import router from "../router";
 const { sequence } = storeToRefs(useCommonStore());
 const emit = defineEmits(["addSign","updStep"]);
 const props = defineProps({
@@ -15,7 +16,7 @@ const props = defineProps({
 });
 const canvasDom = inject("canvasDom");
 const isConfirmPop = ref(false);
-
+const isAsideOpen = ref(false);
 // function save(){
 // 	console.log("sequence", sequence.value);
 // 	let tempArr = [];
@@ -32,6 +33,12 @@ function updStep(type){
 function goNextPage(){
 	updStep('+');
 	// save();
+}
+function toIndex(){
+	router.push("/");
+}
+function toggleAside(){
+	isAsideOpen.value = !isAsideOpen.value; 
 }
 onMounted(()=>{
 	// initCanvas();
@@ -60,23 +67,26 @@ onMounted(()=>{
 				</div>
 			</div>
 		</div>
-		<div class="previewMain_addSignArea">
+		<div :class="['previewMain_addSignArea',{'open': isAsideOpen}]">
+			<div class="previewMain_addSignArea_mobileBtn" @click="toggleAside">
+				<Icon :name="isAsideOpen?'arrow_left':'arrow_right'" />
+			</div>
 			<button class="btn previewMain_addSignArea_btn mt-4" @click="emit('addSign')">
 				<Icon name="add" />
 				<span>加入簽名</span>
 			</button>
-			<button class="btn previewMain_addSignArea_btn">
+			<button class="btn previewMain_addSignArea_btn disable">
 				<Icon name="edit" />
 				<span>加入文字</span>
 			</button>
-			<button class="btn previewMain_addSignArea_btn">
+			<button class="btn previewMain_addSignArea_btn disable">
 				<Icon name="calendar_today" />
 				<span>加入日期</span>
 			</button>
 			<button class="btn btn-primary previewMain_addSignArea_btn mt-6" @click="updStep('+')">
 				<span>下一步</span>
 			</button>
-			<button class="btn btn-secondary previewMain_addSignArea_btn">
+			<button class="btn btn-secondary previewMain_addSignArea_btn" @click="toIndex">
 				<span>上一步</span>
 			</button>
 			<ConfirmPdfPop v-if="isConfirmPop" @prevStep="updStep" />
@@ -86,6 +96,7 @@ onMounted(()=>{
 <style lang="css" scoped>
 .previewMain{
 	@apply
+	relative
 	border-t
 	border-solid
 	border-gray-300
@@ -94,10 +105,11 @@ onMounted(()=>{
 	flex;
 	&_aside{
 		@apply
-		block
 		w-[72px]
 		h-full
-		bg-white;
+		bg-white
+		hidden
+		lg:block;
 	}
 	&_pdfArea{
 		@apply
@@ -160,23 +172,56 @@ onMounted(()=>{
 	}
 	&_addSignArea{
 		@apply
-		relative
-		w-[400px]
+		absolute
+		w-[95%]
+		pl-[60px]
 		h-full
 		bg-white
 		shadow-box
-		p-4
 		duration-500
 		transform
-		translate-x-0;
+		translate-x-0
+		sm:translate-x-[95%]
+		lg:relative
+		lg:w-[400px]
+		lg:translate-x-0
+		lg:p-4;
+		&.open{
+			@apply
+			sm:translate-x-[5%];
+		}
+		&_mobileBtn{
+			@apply
+			absolute
+			flex
+			justify-center
+			items-center
+			left-0
+			h-full
+			shadow-box
+			cursor-pointer
+			lg:hidden;
+			i{
+				@apply
+				text-5xl
+			}
+		}
 		&_btn{
 			@apply
 			h-10
 			min-w-[40px]
-			w-full
 			py-4
 			px-6
-			mb-2;
+			mb-2
+			mx-auto
+			w-[85%]
+			lg:w-full;
+			&.disable{
+				@apply
+				bg-gray-100
+				text-gray-300
+				cursor-default
+			}
 			i{
 				@apply
 				text-2xl

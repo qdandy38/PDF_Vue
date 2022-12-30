@@ -161,7 +161,8 @@ onMounted(()=>{
 .popup{
   &_main{
     @apply
-    w-[60%];
+    w-[85%]
+    md:w-[60%];
     &_body{
       @apply
       p-4;
