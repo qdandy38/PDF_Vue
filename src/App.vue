@@ -10,8 +10,8 @@ import { RouterLink, RouterView } from 'vue-router'
 <style lang="css" scoped>
 .app{
   @apply
-  w-screen
+  /* w-screen */
   h-screen
-  bg-gray-50;
+  /* bg-gray-50; */
 }
 </style>

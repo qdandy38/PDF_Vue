@@ -117,11 +117,12 @@ onMounted(()=>{
 				bg-primary
 				text-white
 				border-primary
-				
 				rounded-[50%]
 				flex
 				justify-center
-				items-center;
+				items-center
+				mx-4
+				lg:mx-0;
 				&.noComplete{
 					@apply
 					bg-transparent
@@ -149,14 +150,17 @@ onMounted(()=>{
 				@apply
 				text-gray-400
 				font-bold
-				px-2;
+				px-2
+				hidden
+				lg:block;
 			}
 			&_line{
 				@apply
 				w-[60px]
 				h-[2px]
 				bg-gray-200
-				mr-4;
+				hidden
+				lg:block;
 			}
 		}
 	}

@@ -32,20 +32,23 @@ onMounted(()=>{
 	<div class="pdfUpload">
 		<Header />
 		<div class="pdfUpload_main">
-			<div class="pdfUpload_main_uploadArea"
-				@click="uploadEvent"
-				@drop.prevent="drop"
-				@dragover.prevent
-			>
-				<label for="file">
-					<input type="file" name="file" class="hidden" ref="fileDom" @change="upload">
-					<div class="pdfUpload_main_uploadArea_container">
-						<img src="/images/add_file.png" />
-						<span>將檔案拖曳至這裡</span>
-						<button class="btn btn-primary uploadBtn">選擇檔案</button>
-						<p>檔案大小10MB以內，檔案格式為PDF</p>
-					</div>
-				</label>
+			<div class="pt-4">
+				<h1 class="pdfUpload_main_title">快速省時的電子簽署工具</h1>
+				<div class="pdfUpload_main_uploadArea"
+					@click="uploadEvent"
+					@drop.prevent="drop"
+					@dragover.prevent
+				>
+					<label for="file">
+						<input type="file" name="file" class="hidden" ref="fileDom" @change="upload">
+						<div class="pdfUpload_main_uploadArea_container">
+							<img src="/images/add_file.png" />
+							<span>將檔案拖曳至這裡</span>
+							<button class="btn btn-primary uploadBtn">選擇檔案</button>
+							<p>檔案大小10MB以內，檔案格式為PDF</p>
+						</div>
+					</label>
+				</div>
 			</div>
 			<div class="pdfUpload_main_intro">
 				<h2 class="pdfUpload_main_intro_title">輕鬆幾步驟，完成您的簽署</h2>
@@ -76,15 +79,26 @@ onMounted(()=>{
 </template>
 <style lang="css" scoped>
 .pdfUpload{
+	@apply
+	bg-gray-50;
 	&_main{
 		@apply
-		pt-5
 		w-[90%]
-		min-h-[calc(100vh-120px)]
-		mx-auto;
+		mx-auto
+		h-auto
+		lg:h-[calc(100vh-120px)];
+
+		&_title{
+			@apply
+			block
+			text-center
+			text-2xl
+			text-gray-400
+			font-bold
+			lg:hidden;
+		}
 		&_uploadArea{
 			@apply
-			my-5
 			w-full
 			h-[40vh]
 			border-[2px]
@@ -93,7 +107,8 @@ onMounted(()=>{
 			bg-secondary
 			flex
 			justify-center
-			items-center;
+			items-center
+			mt-4;
 			&_container{
 				@apply
 				flex
@@ -121,10 +136,11 @@ onMounted(()=>{
 		}
 		&_intro{
 			@apply
-			py-5
+			pt-4
 			w-full;
 			&_title{
 				@apply
+				py-5
 				text-gray-400
 				text-2xl
 				font-bold
@@ -134,7 +150,9 @@ onMounted(()=>{
 				@apply
 				py-5
 				flex
-				justify-evenly;
+				justify-evenly
+				flex-col
+				lg:flex-row;
 				li{
 					@apply
 					flex

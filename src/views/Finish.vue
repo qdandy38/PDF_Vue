@@ -54,10 +54,12 @@ onMounted(()=>{
     bg-[rgba(206,229,228,0.2)]
     flex
     justify-center
-    items-center;
+    items-center
+    flex-col
+    lg:flex-row;
     img{
       @apply
-      max-w-[400px];
+      max-w-[300px];
     }
     h3{
       @apply
