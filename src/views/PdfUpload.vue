@@ -86,7 +86,7 @@ onMounted(()=>{
 		w-[90%]
 		mx-auto
 		h-auto
-		lg:h-[calc(100vh-120px)];
+		lg:min-h-[calc(100vh-120px)];
 
 		&_title{
 			@apply
