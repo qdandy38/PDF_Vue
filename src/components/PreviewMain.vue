@@ -41,6 +41,7 @@ function toggleAside(){
 	isAsideOpen.value = !isAsideOpen.value; 
 }
 onMounted(()=>{
+	console.log('test');
 	// initCanvas();
 })
 </script>
